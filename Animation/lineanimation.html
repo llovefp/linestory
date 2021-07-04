@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    .demo1,
+    .demo2,
+    .demo3,
+    .demo4{
+        border: 1px solid #ccc;
+        width: 200px;
+        height: 200px;
+        background-color: #fff;
+        position: relative;
+    }
+
+    .line {
+        background-color: #f00;
+        position: absolute;
+    }
+
+    .line1 {
+        top: 0;
+        left: 0px;
+    }
+
+    .line2 {
+        right: 0;
+        top: 0;
+    }
+
+    .line3 {
+        right: 0;
+        bottom: 0;
+    }
+
+    .line4 {
+        bottom: 0;
+        left: 0;
+    }
+
+    .demo1 .line1 {
+        height: 1px;
+        /* width: 200px; */
+        width: 0px;
+        transition: all .3s .9s ease-in-out;
+        -webkit-transition: all .3s .9s ease-in-out;
+        -moz-transition: all .3s .9s ease-in-out;
+        -ms-transition: all .3s .9s ease-in-out;
+    }
+
+    .demo1 .line2 {
+        width: 1px;
+        height: 200px;
+        height: 0px;
+        right: 0;
+        top: 0;
+        transition: all .3s .6s ease-in-out;
+        -webkit-transition: all .3s .6s ease-in-out;
+        -moz-transition: all .3s .6s ease-in-out;
+        -ms-transition: all .3s .6s ease-in-out;
+    }
+
+    .demo1 .line3 {
+        width: 200px;
+        width: 0px;
+        height: 1px;
+        right: 0;
+        bottom: 0;
+        transition: all .3s .3s ease-in-out;
+        -webkit-transition: all .3s .3s ease-in-out;
+        -moz-transition: all .3s .3s ease-in-out;
+        -ms-transition: all .3s .3s ease-in-out;
+    }
+
+    .demo1 .line4 {
+        width: 1px;
+        /* height:200px; */
+        height: 0px;
+        bottom: 0;
+        left: 0;
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+    }
+
+    .demo1:hover .line1 {
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        -ms-transition: all .3s ease-in-out;
+        width: 200px;
+    }
+
+    .demo1:hover .line2 {
+        transition: all 0.3s 0.3s ease-in-out;
+        -webkit-transition: all 0.3s 0.3s ease-in-out;
+        -moz-transition: all 0.3s 0.3s ease-in-out;
+        -ms-transition: all 0.3s 0.3s ease-in-out;
+        height: 200px;
+    }
+
+    .demo1:hover .line3 {
+        transition: all 0.3s 0.6s ease-in-out;
+        -webkit-transition: all 0.3s 0.6s ease-in-out;
+        -moz-transition: all 0.3s 0.6s ease-in-out;
+        -ms-transition: all 0.3s 0.6s ease-in-out;
+        width: 200px;
+    }
+
+    .demo1:hover .line4 {
+        transition: all 0.3s 0.9s ease-in-out;
+        -webkit-transition: all 0.3s 0.9s ease-in-out;
+        -moz-transition: all 0.3s 0.9s ease-in-out;
+        -ms-transition: all 0.3s 0.9s ease-in-out;
+        height: 200px;
+    }
+    /*demo2 */
+
+    .demo2 .line {
+        transform-origin: 50% 50%;
+        position: absolute;
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+    }
+
+    .demo2 .line1 {
+        width: 0;
+        height: 1px;
+    }
+
+    .demo2 .line2 {
+        height: 0;
+        width: 1px;
+    }
+
+    .demo2 .line3 {
+        width: 0;
+        height: 1px;
+    }
+
+    .demo2 .line4 {
+        width: 1px;
+        height: 0;
+    }
+
+    .demo2:hover .line {
+        transition: all 0.4s ease-in-out;
+        -webkit-transition: all 0.4s ease-in-out;
+        -moz-transition: all 0.4s ease-in-out;
+        -ms-transition: all 0.4s ease-in-out;
+    }
+
+    .demo2:hover .line1 {
+        width: 200px;
+        height: 1px;
+    }
+
+    .demo2:hover .line2 {
+        height: 200px;
+        width: 1px;
+    }
+
+    .demo2:hover .line3 {
+        width: 200px;
+        height: 1px;
+    }
+
+    .demo2:hover .line4 {
+        width: 1px;
+        height: 200px;
+    }
+
+    .demo3 .line {
+        transition: all .3s ease-in-out;
+        -webkit-transition: all .3s ease-in-out;
+        -moz-transition: all .3s ease-in-out;
+        transform-origin: center center;
+        transform: scale(0, 0);
+        -webkit-transform: scale(0, 0);
+        -moz-transform: scale(0, 0);
+    }
+
+    .demo3 .line1 {
+        transform: scale(0, 1);
+        -webkit-transform: scale(0, 1);
+        -moz-transform: scale(0, 1);
+        width: 200px;
+        height: 1px;
+    }
+
+    .demo3 .line2 {
+        transform: scale(1, 0);
+        -webkit-transform: scale(1, 0);
+        -moz-transform: scale(1, 0);
+        width: 1px;
+        height: 200px;
+    }
+
+    .demo3 .line3 {
+        transform: scale(0, 1);
+        -webkit-transform: scale(0, 1);
+        -moz-transform: scale(0, 1);
+        width: 200px;
+        height: 1px;
+    }
+
+    .demo3 .line4 {
+        transform: scale(1, 0);
+        -webkit-transform: scale(1, 0);
+        -moz-transform: scale(1, 0);
+        height: 200px;
+        width: 1px;
+    }
+
+    .demo3:hover .line {
+        -webkit-transition: all .3s ease-in-out;
+        -o-transition: all .3s ease-in-out;
+        transition: all .3s ease-in-out;
+        transform: scale(1, 1);
+        -webkit-transform: scale(1, 1);
+        -moz-transform: scale(1, 1);
+    }
+    /* demo4 */
+
+    .demo4 .line {
+        transition: all 1s ease-in-out;
+        -webkit-transition: all 1s ease-in-out;
+        -moz-transition: all 1s ease-in-out;
+    }
+    .demo4 .line41{left:0;top:0;width:0;height:1px;}
+    .demo4 .line42{right:0;top:0;width:0;height:1px;}
+    .demo4 .line43{right:0;top:0;width:1px;height:0;}
+    .demo4 .line44{right: 0; bottom:0;width:1px;height:0;}
+    .demo4 .line45{right:0;bottom:0;height:1px;width:0;}
+    .demo4 .line46{left:0; bottom:0;height:1px;width:0;}
+    .demo4 .line47{left:0;bottom:0;width:1px;height:0;}
+    .demo4 .line48{left:0;top:0;width:1px;height:0;}
+
+    .demo4:hover .line{
+        -webkit-transition: all 0.4s ease-in-out;
+        -o-transition: all 0.4s ease-in-out;
+        transition: all 0.4s ease-in-out;
+    }
+    .demo4:hover .line41{width:50%;}
+    .demo4:hover .line42{width:50%;}
+    .demo4:hover .line43{height: 50%;}
+    .demo4:hover .line44{height:50%;}
+    .demo4:hover .line45{width:50%;}
+    .demo4:hover .line46{width:50%;}
+    .demo4:hover .line47{height:50%;}
+    .demo4:hover .line48{height:50%;}
+    </style>
+    <script src="jquery.js"></script>
+</head>
+
+<body>
+    <div class="con">
+        <h1>demo1</h1>
+        <div class="demo1">
+            <!-- <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div> -->
+        </div>
+    </div>
+    <div class="con">
+        <h1>demo2</h1>
+        <div class="demo2">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+        </div>
+    </div>
+    <div class="con">
+        <h1>demo3</h1>
+        <div class="demo3">
+            <div class="line line1"></div>
+            <div class="line line2"></div>
+            <div class="line line3"></div>
+            <div class="line line4"></div>
+        </div>
+    </div>
+    <div class="con">
+        <h1>demo4</h1>
+        <div class="demo4">
+            <div class="line line41"></div>
+            <div class="line line42"></div>
+            <div class="line line43"></div>
+            <div class="line line44"></div>
+            <div class="line line45"></div>
+            <div class="line line46"></div>
+            <div class="line line47"></div>
+            <div class="line line48"></div>
+        </div>
+    </div>
+</body>
+
+</html>
+<script>
+$(function() {
+    function init() {
+        var $demo1 = $('.demo1');
+        for (var i = 0; i < 4; i++) {
+            var newO = $('<div class="line line' + (i + 1) + '"></div>')
+            $demo1.append(newO);
+        }
+    }
+    init();
+    // var $doc = $(document);
+    // $doc.on('mouseover', 'div[class^="demo"]', function() {
+    //     if ($(this).is('.demo1')) {
+    //         for (var i = 0; i < 4; i++) {
+    //             var newO = $('<div class="line line' + (i + 1) + '"></div>')
+    //             $(this).append(newO);
+    //         }
+    //       $(this).removeClass('active').addClass('active');
+    //     }
+    // })
+    // $doc.on('mouseleave', 'div[class^="demo"]', function() {
+    //     //console.log(111);
+    //     $(this).find('.line').remove();
+    //     $(this).removeClass('active');
+    // })
+})
+</script>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <title>涂鸦本地</title>
+    <style>
+    .can-con{
+      position:absolute;
+      top: 50%;
+      left: 50%;
+      margin-left: -50px;
+      margin-top: -50px;
+
+    }
+
+    #board {
+        background-color: lightblue;
+        /* margin: 0 auto; */
+         /* position: absolute;
+                 top: 50%;
+                 left: 50%;
+                 transform: translateX(-50%);
+                 -webkit-transform: translateX(-50%);
+                 -moz-transform: translateX(-50%);
+                 -webkit-transform: translateY(-50%);
+                 -moz-transform: translateY(-50%);
+                 transform: translateY(-50%); */
+    }
+    </style>
+</head>
+
+<body>
+    <div class="can-con">
+    <canvas id="board" width="500" height="500"></canvas>
+    </div>
+    <p>
+        <label for='color'>颜色</label>
+        <select name="colors" id="colorSelects">
+            <option value="red">red</option>
+            <option value="blue">blue</option>
+            <option value="orange">orange</option>
+        </select>
+        <label for="lineW">线宽</label>
+        <select name="lines" id="lineWs">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="4">4</option>
+            <option value="7">7</option>
+            <option value="9">9</option>
+            <option value="12">12</option>
+        </select>
+    </p>
+    <button id="clearBtn">清除</button>
+    <input type="hidden" name="pos" id="poses">
+</body>
+
+</html>
+<script>
+var can1 = {
+    init: function() {
+        var colorSelect = document.getElementById('colorSelects');
+        var lineSelect = document.getElementById('lineWs');
+        var posIn = document.getElementById('poses');
+        var button = document.getElementById('clearBtn');
+        var parent = document.querySelector('.can-con');
+        //创建画布
+        var can = document.querySelector('#board');
+        //获取上下文
+        var ctx = can.getContext('2d');
+        document.onmousedown = down;
+        document.onmousemove = move;
+        document.onmouseup = up;
+        var off = 0;
+        //按下
+        function down(event) {
+            var ev = event || window.event;
+            var pos = getPos(ev);
+            // posIn.value = JSON.stringify(pos);
+            // console.log(posIn.value);
+            off = 1; //控制画笔
+            ctx.beginPath(); //另起炉灶
+            ctx.moveTo(pos.x, pos.y);
+        }
+
+        function move(event) {
+            var ev = event || window.event;
+            if (off) {
+                var posend = getPos(ev);
+                // var posStart = JSON.parse(posIn.value);
+                // console.log(posStart);
+                var colorIndex = colorSelect.selectedIndex;
+                var lineIndex = lineSelect.selectedIndex;
+                var colored = colorSelect.options[colorIndex].value;
+                var lined = lineSelect.options[lineIndex].value;
+                // console.log(colored,lined)
+                ctx.save();
+
+                ctx.lineWidth = lined;
+                ctx.strokeStyle = colored;
+
+                ctx.lineTo(posend.x, posend.y)
+                ctx.stroke();
+
+            }
+        }
+
+        function up(e) {
+            off = 0;
+            ctx.closePath();
+        }
+
+        function getPos(ev) {
+
+            //获取焦点位置
+            var scL = document.body.scrollLeft || document.documentElement.scrollLeft;
+            var scT = document.body.scrollTop || document.documentElement.scrollTop;
+            var thisOffL = can.offsetLeft - 0;
+            var thisOffT = can.offsetTop - 0;
+            var parentOffL = parent.offsetLeft- 0;
+            var parentOffT = parent.offsetTop- 0;
+
+            console.log(parentOffL,parentOffT,'==parent==')
+            console.log(can.style.left,can.style.top,"posi");
+            console.log(can.scrollHeight,can.scrollWidth,"scroll");
+            console.log(ev.clientY, can.offsetTop, scT,'+++++');
+            console.log(ev.clientX, can.offsetLeft, scL,"====");
+            var mousex = (ev.clientX - 0 + scL * 1 - 0 - thisOffL - parentOffL) || (ev.pageX - 0 - thisOffL - parentOffL);
+            var mousey = (ev.clientY - 0 + scT * 1 - 0 - thisOffT - parentOffT) || (ev.pageY - 0 - thisOffT- parentOffT);
+            return {
+                x: mousex,
+                y: mousey
+            }
+        }
+        button.onclick = clearcan;
+
+        function clearcan() {
+            var width = can.width - 0;
+            var height = can.height - 0;
+            ctx.clearRect(0, 0, width, height);
+        }
+    }
+}
+can1.init();
+</script>
