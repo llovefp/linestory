@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <style>
+    body {
+        background-color: #000;
+    }
+
+    input::-ms-clear {
+        display: none;
+    }
+
+    input::-ms-reveal {
+        display: none;
+    }
+
+    .line {
+        width: 5px;
+        height: 20px;
+        background-color: #fff;
+        animation: move 1s steps(2) infinite;
+        -webkit-animation: move 1s steps(2) infinite;
+    }
+
+    @keyframes move {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    @-webkit-keyframes move {
+        0% {
+            opacity: 1;
+        }
+        100% {
+            opacity: 0;
+        }
+    }
+
+    .shake {
+        width: 300px;
+        height: 80px;
+        background-color: lightblue;
+        color: #fff;
+        font-size: 20px;
+        line-height: 80px;
+        /* animation: shake 1s both;
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both animation-name: shake;
+        -webkit-animation-name: shake;
+        animation-name: shake; */
+        -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1);
+        transform: translateX(-1000px);
+        -webkit-transform: translateX(-1000px);
+        -moz-transform: translateX(-1000px);
+        -ms-transform: translateX(-1000px);
+        -o-transform: translateX(-1000px);
+    }
+
+    .shake {
+        width: 400px;
+        -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        -moz-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        -o-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transform: translateX(100px);
+        -webkit-transform: translateX(100px);
+        -moz-transform: translateX(100px);
+        -ms-transform: translateX(100px);
+        -o-transform: translateX(100px);
+    }
+
+    .shake1 {
+        -webkit-transition: all 500ms 1s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        -moz-transition: all 500ms 1s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        -o-transition: all 500ms 1s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transition: all 500ms 1s cubic-bezier(0.175, 0.885, 0.320, 1.275);
+        transform: translateX(100px);
+        -webkit-transform: translateX(100px);
+        -moz-transform: translateX(100px);
+        -ms-transform: translateX(100px);
+        -o-transform: translateX(100px);
+    }
+
+    .animated {
+        -webkit-animation-duration: 1s;
+        animation-duration: 1s;
+        -webkit-animation-fill-mode: both;
+        animation-fill-mode: both
+    }
+
+    @-webkit-keyframes rubberBand {
+        0% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        100% {
+            -webkit-transform: translate3d(100px, 0, 0);
+            transform: translate3d(100px, 0, 0)
+        }
+    }
+
+    @keyframes rubberBand {
+         0% {
+            -webkit-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0)
+        }
+        100% {
+            -webkit-transform: translate3d(100px, 0, 0);
+            transform: translate3d(100px, 0, 0)
+        }
+    }
+
+    .rubberBand {
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand
+    }
+
+    .rubberBand1 {
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand;
+        animation-delay: .5s;
+        -webkit-animation-delay: .5s;
+    }
+       .rubberBand2 {
+        -webkit-animation-name: rubberBand;
+        animation-name: rubberBand;
+        animation-delay: 1s;
+        -webkit-animation-delay: 1s;
+    }
+    /* 我快不行了....... */
+
+    -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1);
+    /* older webkit */
+
+    -webkit-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -moz-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -o-transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    transition: all 500ms cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    /* -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1);
+    older webkit
+
+    -webkit-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -moz-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    -o-transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275);
+    transition-timing-function: cubic-bezier(0.175, 0.885, 0.320, 1.275); */
+    </style>
+</head>
+
+<body>
+    <input type="text" name="" id="">
+    <input type="password" name="" id="">
+    <div class="line"></div>
+    <div class="shake animated rubberBand">shake</div>
+    <div class="shake animated rubberBand1">shake1</div>
+    <div class="shake animated rubberBand2">shake2</div>
+</body>
+
+</html>
+<script>
+</script>
